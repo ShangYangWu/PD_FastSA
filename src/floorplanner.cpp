@@ -8,6 +8,7 @@
 using namespace std;
 
 void Floorplanner::clear(){
+    // tml
     vector<string> keysToDelete;
     for(auto& item : _tmlMap){
         keysToDelete.push_back(item.first);
@@ -17,6 +18,27 @@ void Floorplanner::clear(){
         _tmlMap.erase(key);
     }
 
+    // best
+    keysToDelete.clear();
+    for(auto& item : _bestVec){
+        keysToDelete.push_back(item.first);
+    }
+    for (Tempblk key : keysToDelete){
+        delete _bestVec[key];
+        _bestVec.erase();
+    }
+
+    // last
+    keysToDelete.clear();
+    for(auto& item : _lastVec){
+        keysToDelete.push_back(item.first);
+    }
+    for (Tempblk key : keysToDelete){
+        delete _lastVec[key];
+        _lastVec.erase();
+    }
+
+    // block
     for(auto& item : _blkVec){
         _blkVec.erase(item.first);
     }
@@ -29,6 +51,7 @@ void Floorplanner::clear(){
         delete item;
     }
 
+    // net
     for(auto& item: _netList){
         delete item;
     }
